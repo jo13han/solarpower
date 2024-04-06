@@ -14,12 +14,49 @@ export default function Home() {
     };
 
     window.addEventListener("scroll", handleScroll);
+    
+    countUpto(document.querySelector("#energy_count"), 3245, 2000, "KW");
+    countUpto(document.querySelector("#co2_count"), 11398587, 2000, "KT");
+    countUpto(document.querySelector("#savings_count"), 1567, 2000, "KW");
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
+  const handleSmoothScroll = (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+    id: string
+  ) => {
+    e.preventDefault();
+    const targetElement = document.querySelector(id) as HTMLElement | null;
+    if (targetElement) {
+      targetElement.scrollIntoView({
+        behavior: "smooth",
+      });
+    }
+  };
+  
+  function countUpto(elem: HTMLElement | null, target: number, duration: number, unit: string) {
+    if (!elem) return;
+  
+    let count = 0;
+    const intervalDuration = 10; // Interval duration in milliseconds
+    const frames = duration / intervalDuration; // Total number of frames
+    const increment = target / frames; // Increment value per frame
+  
+    let currentCount = 0;
+  
+    const interval = setInterval(() => {
+      if (currentCount < target) {
+        currentCount += increment;
+        elem.innerHTML = Math.ceil(currentCount) + " " + unit;
+      } else {
+        clearInterval(interval);
+      }
+    }, intervalDuration);
+  }
+  
   return (
     <>
       <section id="Front">
@@ -31,8 +68,9 @@ export default function Home() {
               }`}
               onMouseEnter={() => setHoveredButton("process")}
               onMouseLeave={() => setHoveredButton(null)}
+              onClick={(e) => handleSmoothScroll(e, "#Process")} // Smooth scroll to #Process section
             >
-              <a href="#Process">Process</a>
+              Process
               <span
                 className={`absolute left-0 right-0 bottom-0 h-1 bg-yellow-300 transition-all duration-300 ${
                   hoveredButton === "process"
@@ -47,6 +85,7 @@ export default function Home() {
               }`}
               onMouseEnter={() => setHoveredButton("services")}
               onMouseLeave={() => setHoveredButton(null)}
+              onClick={(e) => handleSmoothScroll(e, "#Stats")} // Smooth scroll to #Stats section
             >
               Services
               <span
@@ -63,8 +102,9 @@ export default function Home() {
               }`}
               onMouseEnter={() => setHoveredButton("connect")}
               onMouseLeave={() => setHoveredButton(null)}
+              onClick={(e) => handleSmoothScroll(e, "#Footer")} // Smooth scroll to #Footer section
             >
-              <a href="#Footer">Connect</a>
+              Connect
               <span
                 className={`absolute left-0 right-0 bottom-0 h-1 bg-yellow-300 transition-all duration-300 ${
                   hoveredButton === "connect"
@@ -113,19 +153,19 @@ export default function Home() {
           whileInView={{ opacity: 1 }}
           className="bg-black text-white py-8 opacity-0"
         >
-          <div className="flex justify-center">
-            <div className="w-70 h-40 flex-col items-center justify-center m-4 text-center px-4">
-              <p className="text-5xl font-bold text-yellow-500">3,245 KW</p>
+          <div className="flex flex-row justify-center">
+            <div className="h-40 flex-col items-center justify-center m-4 text-center px-4">
+              <p id="energy_count" className="text-5xl font-bold text-yellow-500">3,245 KW</p>
               <p className="text-2xl py-2">Solar Energy Generated Today</p>
             </div>
-            <div className="w-70 h-40 flex-col items-center justify-center m-4 text-center px-4">
-              <p className="text-5xl font-bold text-yellow-500">
+            <div className="h-40 flex-col items-center justify-center m-4 text-center px-4">
+              <p id="co2_count"className="text-5xl font-bold text-yellow-500">
                 11,398,587 KT
               </p>
               <p className="text-2xl py-2">CO2 Emissions This Year</p>
             </div>
-            <div className="w-70 h-40 flex-col items-center justify-center m-4 text-center px-4">
-              <p className="text-5xl font-bold text-yellow-500">1,567 KW</p>
+            <div className="h-40 flex-col items-center justify-center m-4 text-center px-4">
+              <p id="savings_count"className="text-5xl font-bold text-yellow-500">1,567 KW</p>
               <p className="text-2xl py-2">Solar Energy Savings Today</p>
             </div>
           </div>
@@ -160,8 +200,11 @@ export default function Home() {
                   d="M13,24c0,6.1,4.9,11,11,11c6.1,0,11-4.9,11-11s-4.9-11-11-11C17.9,13,13,17.9,13,24"
                 ></path>
               </svg>
-              <p className="text-xl py-4 ml-8">
-              Enter your address to receive a detailed assessment of your rooftop &apos;s solar potential. Our platform recommends the best solar panel setup tailored to your roof and energy requirements, making solar adoption hassle-free.
+              <p className="text-xl py-4 ml-8 ">
+                Enter your address to receive a detailed assessment of your
+                rooftop &apos;s solar potential. Our platform recommends the
+                best solar panel setup tailored to your roof and energy
+                requirements, making solar adoption hassle-free.
               </p>
             </div>
             <div className="flex flex-col justify-center items-center ml-5">
@@ -171,7 +214,10 @@ export default function Home() {
                 alt="Solar Panel"
               ></img>
               <p className="text-xl py-8">
-              Discover top-rated vendors and products optimized for your solar project. Our tools help you choose the most efficient and cost-effective solar panels, ensuring you get the best solution for your needs.
+                Discover top-rated vendors and products optimized for your solar
+                project. Our tools help you choose the most efficient and
+                cost-effective solar panels, ensuring you get the best solution
+                for your needs.
               </p>
             </div>
 
@@ -182,7 +228,10 @@ export default function Home() {
                 alt="Light Bulb"
               ></img>
               <p className="text-xl py-6">
-              Explore available financial incentives and rebates to make solar installation more affordable. We guide you through loan options and facilitate the setup of net metering connections, maximizing your solar savings and grid interaction.
+                Explore available financial incentives and rebates to make solar
+                installation more affordable. We guide you through loan options
+                and facilitate the setup of net metering connections, maximizing
+                your solar savings and grid interaction.
               </p>
             </div>
           </div>
@@ -192,32 +241,41 @@ export default function Home() {
       <section id="Footer">
         <footer className="bg-black">
           <div className="container mx-auto flex justify-between items-center border-t-2 border-yellow-500">
-            <div>
-              <h3 className="text-yellow-500 text-xl font-bold m-4">
-                Footer Title
+            <div className="flex items-center m-4">
+              {" "}
+              {/* Utilize flexbox to align items */}
+              <h3 className="text-yellow-500 text-xl font-bold">
+                neolectra@gmail.com
               </h3>
-              <p className="text-gray-400 m-4">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              </p>
+              <p className="ml-48 text-slate-300">©2024 Neolectra India</p>
             </div>
-            <div>
+            <div className="flex py-6">
               <ul className="flex space-x-4">
                 <li>
                   <a href="#" className="text-yellow-500 hover:text-yellow-400">
-                    Link 1
+                    <img
+                      src="/images/instagram.png"
+                      alt="Instagram"
+                      className="h-10 w-10"
+                    ></img>
                   </a>
                 </li>
                 <li>
                   <a href="#" className="text-yellow-500 hover:text-yellow-400">
-                    Link 2
+                    <img
+                      src="/images/facebook.png"
+                      alt="facebook"
+                      className="h-10 w-10"
+                    ></img>
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="#"
-                    className="text-yellow-500 hover:text-yellow-400 mr-4"
-                  >
-                    Link 3
+                  <a href="#" className="text-yellow-500 hover:text-yellow-400">
+                    <img
+                      src="/images/linkedin.png"
+                      alt="linkedin"
+                      className="h-10 w-10 mr-4"
+                    ></img>
                   </a>
                 </li>
               </ul>
