@@ -161,7 +161,7 @@ export default function Home() {
                 ></path>
               </svg>
               <p className="text-xl py-4 ml-8">
-              Enter your address to receive a detailed assessment of your rooftop's solar potential. Our platform recommends the best solar panel setup tailored to your roof and energy requirements, making solar adoption hassle-free.
+              Enter your address to receive a detailed assessment of your rooftop &apos;s solar potential. Our platform recommends the best solar panel setup tailored to your roof and energy requirements, making solar adoption hassle-free.
               </p>
             </div>
             <div className="flex flex-col justify-center items-center ml-5">
