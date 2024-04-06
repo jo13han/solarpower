@@ -1,8 +1,142 @@
 .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgb(0, 0, 0);
+  background: linear-gradient(50deg, rgba(0, 0, 0, 1) 0%, rgba(23, 23, 23, 1) 83%, rgba(34, 34, 34, 1) 100%);
   width: 100vw;
   height: 100vh;
+}
+
+.buttonContainer {
+  position: absolute;
+  bottom: 0;
+  margin-bottom: 30px;
+  right: 0;
+  margin-right: 35px;
+}
+
+.nextButton {
+  border: none;
+  background-color: yellow;
+  color: black;
+  border-radius: 5px;
+  height: 40px;
+  width: 160px;
+  font-weight: 800;
+  -webkit-box-shadow: -1px 3px 5px 4px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: -1px 3px 5px 4px rgba(0, 0, 0, 0.75);
+  box-shadow: -1px 3px 5px 4px rgba(0, 0, 0, 0.75);
+  margin-left: 10px;
+}
+
+.nextBoxIcon {
+  position: absolute;
+  font-size: 20px;
+  color: rgb(0, 0, 0);
+  opacity: 0.9;
+  bottom: 11px;
+  right: 42px;
+  opacity: 0.8;
+}
+
+.clearBoxIcon {
+  position: absolute;
+  font-size: 20px;
+  color: rgb(0, 0, 0);
+  opacity: 0.9;
+  bottom: 11px;
+  right: 285px;
+  opacity: 0.8;
+}
+
+.clearButton {
+  border: none;
+  background-color: rgb(231, 75, 32);
+  color: black;
+  border-radius: 5px;
+  height: 40px;
+  width: 160px;
+  font-weight: 800;
+  -webkit-box-shadow: -1px 3px 5px 4px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: -1px 3px 5px 4px rgba(0, 0, 0, 0.75);
+  box-shadow: -1px 3px 5px 4px rgba(0, 0, 0, 0.75);
+  margin-right: 10px;
+}
+
+.screenshotContainer {
+  width: 80%;
+  margin-top: 30px;
+}
+
+.guidenceContainer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  margin-bottom: 25px;
+  margin-left: 35px;
+  background-color: rgb(23, 23, 23);
+  color: white;
+  font-weight: 700;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 15px;
+  width: 450px;
+  height: 50px;
+  border-radius: 12px;
+  -webkit-box-shadow: -1px 3px 5px 4px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: -1px 3px 5px 4px rgba(0, 0, 0, 0.75);
+  box-shadow: -1px 3px 5px 4px rgba(0, 0, 0, 0.75);
+}
+
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  .guidenceContainer {
+    width: 81%;
+    font-size: 12px;
+    margin-left: 40px;
+    margin-bottom: 80px;
+  }
+
+  .ball1 .ball2 .ball3 .ball4 {
+    display: none;
+  }
+}
+
+.ball1 {
+  border-radius: 50px;
+  width: 70px;
+  height: 70px;
+  background-color: white;
+  position: absolute;
+  left: 25px;
+  top: 30px;
+}
+
+.ball2 {
+  border-radius: 50px;
+  width: 40px;
+  height: 40px;
+  background-color: white;
+  position: absolute;
+  right: 25px;
+  top: 60px;
+}
+.ball3 {
+  border-radius: 50px;
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  position: absolute;
+  left: 70px;
+  bottom: 150px;
+}
+.ball4 {
+  border-radius: 50px;
+  width: 60px;
+  height: 60px;
+  background-color: white;
+  position: absolute;
+  right: 40px;
+  bottom: 100px;
 }
