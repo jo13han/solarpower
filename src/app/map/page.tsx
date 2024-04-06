@@ -4,6 +4,8 @@ import { Map, useMap } from "@vis.gl/react-google-maps";
 import Link from "next/link";
 import { ChangeEvent, useState } from "react";
 import { FaArrowRight } from "react-icons/fa";
+import { FaSearch } from "react-icons/fa";
+
 
 export default function RenderMap() {
   const map = useMap("main-map");
@@ -40,6 +42,16 @@ export default function RenderMap() {
           <FaArrowRight className={styles.nextBoxIcon} />
         </button>
       </Link>
+      <div className={styles.searchArea}>
+        <div className={styles.inputContainer}>
+          <input
+            value={searchText}
+            onChange={(e) => handleSearch(e)}
+            className={styles.searchBox}
+            placeholder="Search your house.."
+          />
+          <FaSearch className={styles.searchBoxIcon} />
+        </div>
 
       <input
         value={searchText}

@@ -9,7 +9,7 @@ export default function Home() {
         preload="auto"
                 src="/hero_video.mp4"
             ></video>
-    <h1 className="text-8xl text-white absolute bottom-28 font-bold">Project Sunroof India</h1>
+    <h1 className="text-8xl text-white absolute bottom-28 font-bold">Optisolar</h1>
         </div>
   )
 }
