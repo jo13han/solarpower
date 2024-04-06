@@ -1,0 +1,57 @@
+.card {
+  display: flex;
+  width: 98%;
+  height: 70px;
+  background-color: rgb(64, 64, 64);
+  border-radius: 15px;
+  margin: 4px;
+  cursor: pointer;
+  flex-direction: row;
+}
+
+.icon {
+  min-width: 60px;
+  max-width: 60px;
+  background-color: rgb(78, 79, 79);
+  margin: 5px;
+  margin-right: 2px;
+  border-radius: 10px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  font-size: 20px;
+  border: 3px solid rgb(58, 58, 58);
+}
+
+.details {
+  flex-grow: 2;
+  background-color: rgb(78, 79, 79);
+  margin: 5px;
+  border-radius: 10px;
+  padding: 5px;
+  padding-left: 13px;
+  padding-top: 3px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  border: 3px solid rgb(58, 58, 58);
+}
+
+.title {
+  font-size: 17px;
+  font-weight: 600;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.add {
+  font-size: 10px;
+  font-weight: 700;
+  color: rgb(216, 216, 216);
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}

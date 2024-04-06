@@ -31,6 +31,7 @@
   right: 42px;
   opacity: 0.8;
 }
+
 .searchArea {
   position: absolute;
   top: 0;
@@ -74,4 +75,46 @@
   font-size: 20px;
   color: rgb(119, 119, 119);
   opacity: 0.9;
+}
+
+.results {
+  display: flex;
+  min-height: 70px;
+  max-height: 400px;
+  background-color: rgb(42, 42, 42);
+  margin-top: 10px;
+  border-radius: 12px;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column-reverse;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  -webkit-box-shadow: -1px 3px 5px 4px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: -1px 3px 5px 4px rgba(0, 0, 0, 0.75);
+  box-shadow: -1px 3px 5px 4px rgba(0, 0, 0, 0.75);
+  opacity: 0.9;
+}
+
+.results::-webkit-scrollbar {
+  display: none;
+}
+
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  .searchArea {
+    width: 85%;
+    min-width: 85%;
+    max-width: 85%;
+  }
+  .nextButton {
+    margin-right: 15px;
+    width: 120px;
+  }
+
+  .nextBoxIcon {
+    right: 25px;
+  }
 }
