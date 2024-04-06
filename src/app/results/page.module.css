@@ -1,4 +1,86 @@
 .container {
   width: 100vw;
   height: 100vh;
+  background-color: black;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.leftResults {
+  color: white;
+  width: 50%;
+  height: 90%;
+  margin-left: 20px;
+  margin-right: 20px;
+  border-radius: 10px;
+  align-items: center;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.rightResults {
+  color: white;
+  width: 50%;
+  height: 95%;
+  margin-left: 20px;
+  margin-right: 20px;
+  border-radius: 10px;
+}
+
+.original {
+  margin-left: 10px;
+  height: 40%;
+  margin-bottom: 10px;
+}
+
+.new {
+  height: 60%;
+}
+
+.topRes {
+  width: 100%;
+  height: 40%;
+  border-radius: 12px;
+  background-color: rgb(39, 39, 39);
+  margin-bottom: 10px;
+  padding: 20px;
+}
+
+.bottomRes {
+  width: 100%;
+  height: 60%;
+  border-radius: 12px;
+  padding: 20px;
+  background-color: rgb(39, 39, 39);
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.aboveContainer {
+  width: 100%;
+  height: 40%;
+  background-color: rgb(51, 51, 51);
+  border-radius: 10px;
+  margin: 10px;
+}
+
+.finalPower {
+  width: 100%;
+  height: 60%;
+  border-radius: 10px;
+  background-color: rgb(51, 51, 51);
+  margin: 10px;
+}
+
+.inner {
+  width: 100%;
+  height: 100%;
+  background-color: rgb(51, 51, 51);
+  border-radius: 10px;
 }
