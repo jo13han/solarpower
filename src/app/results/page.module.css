@@ -23,7 +23,7 @@
 
 .rightResults {
   color: white;
-  width: 50%;
+  width: 35%;
   height: 95%;
   margin-left: 20px;
   margin-right: 20px;
@@ -65,7 +65,7 @@
 .aboveContainer {
   width: 100%;
   height: 40%;
-  background-color: rgb(51, 51, 51);
+  background-color: rgb(44, 44, 44);
   border-radius: 10px;
   margin: 10px;
 }
@@ -74,13 +74,48 @@
   width: 100%;
   height: 60%;
   border-radius: 10px;
-  background-color: rgb(51, 51, 51);
+  background-color: rgb(44, 44, 44);
   margin: 10px;
 }
 
 .inner {
   width: 100%;
   height: 100%;
-  background-color: rgb(51, 51, 51);
+  background-color: rgb(44, 44, 44);
   border-radius: 10px;
+}
+
+.innerTop {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 50%;
+}
+
+.title {
+  font-weight: 800;
+}
+
+.value {
+  font-size: small;
+}
+
+.innerBottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 50%;
+  background-color: #363636;
+  border-radius: 12px;
+}
+
+.finalInner {
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
 }

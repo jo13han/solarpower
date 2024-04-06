@@ -7,7 +7,7 @@ import { ChangeEvent, useRef, useState } from "react";
 import { FaArrowRight } from "react-icons/fa";
 import { FaSearch } from "react-icons/fa";
 import html2canvas from "html2canvas";
-import { saveScreenshot, fetchSolar } from "@/components/UISlice";
+import { saveScreenshot, fetchSolar, saveCords, saveAdd } from "@/components/UISlice";
 import { useAppDispatch, useAppSelector } from "@/components/reduxHooks";
 
 export default function RenderMap() {
@@ -87,6 +87,8 @@ export default function RenderMap() {
     setMarker(marker);
     //@ts-ignore
     dispatch(fetchSolar({ lat, lng }));
+    dispatch(saveCords({ lat, lng }));
+    dispatch(saveAdd(details.description));
     //close the search menu after selecting location
     setSearchText("");
   }

@@ -6,7 +6,10 @@ import { FaArrowRight } from "react-icons/fa";
 import { MdDeleteOutline } from "react-icons/md";
 import { useAppDispatch, useAppSelector } from "@/components/reduxHooks";
 import Link from "next/link";
+import { processImage, saveCrop } from "@/components/UISlice";
+import { useRouter } from "next/navigation";
 export default function Crop() {
+  const router = useRouter();
   const screenshot = useAppSelector((state: any) => state.uislice.currentScreenshot);
   const [clippedImg, setClippedImg] = useState();
   const dispatch = useAppDispatch();
@@ -28,9 +31,6 @@ export default function Crop() {
               }}
             />
           </div>
-          <div>
-            <img src={clippedImg} alt="" />
-          </div>
           <>
             <div className={styles.guidenceContainer}>Please mark points over the roof to select</div>
             <div className={styles.buttonContainer}>
@@ -39,7 +39,12 @@ export default function Crop() {
                 <MdDeleteOutline className={styles.clearBoxIcon} />
               </button>
               <Link href={"/results"}>
-                <button className={styles.nextButton}>
+                <button
+                  onClick={() => {
+                    dispatch(saveCrop(clippedImg));
+                  }}
+                  className={styles.nextButton}
+                >
                   <span style={{ marginRight: "25px" }}>Next</span>
                   <FaArrowRight className={styles.nextBoxIcon} />
                 </button>
