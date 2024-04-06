@@ -21,7 +21,7 @@ export default function Home() {
 
   return (
     <>
-      <section>
+      <section id ="Front">
         {showNavbar && (
           <nav className="flex justify-center items-center absolute top-0 left-0 right-0 bg-transparent py-4 z-10">
             <button
@@ -31,7 +31,7 @@ export default function Home() {
               onMouseEnter={() => setHoveredButton("process")}
               onMouseLeave={() => setHoveredButton(null)}
             >
-              Process
+              <a href="#Process">Process</a>
               <span
                 className={`absolute left-0 right-0 bottom-0 h-1 bg-yellow-300 transition-all duration-300 ${
                   hoveredButton === "process"
@@ -63,7 +63,7 @@ export default function Home() {
               onMouseEnter={() => setHoveredButton("connect")}
               onMouseLeave={() => setHoveredButton(null)}
             >
-              Connect
+              <a href="#Footer">Connect</a>
               <span
                 className={`absolute left-0 right-0 bottom-0 h-1 bg-yellow-300 transition-all duration-300 ${
                   hoveredButton === "connect"
@@ -72,24 +72,6 @@ export default function Home() {
                 }`}
               ></span>
             </button>
-            <Link href={"/map"}>
-              <button
-                className={`relative bg-transparent text-gray-800 font-bold py-2 px-4 ${
-                  hoveredButton === "connect" ? "" : ""
-                }`}
-                onMouseEnter={() => setHoveredButton("connect")}
-                onMouseLeave={() => setHoveredButton(null)}
-              >
-                Take Me There!
-                <span
-                  className={`absolute left-0 right-0 bottom-0 h-1 bg-yellow-300 transition-all duration-300 ${
-                    hoveredButton === "connect"
-                      ? "transform scale-x-100"
-                      : "transform scale-x-0"
-                  }`}
-                ></span>
-              </button>
-            </Link>
           </nav>
         )}
         <div className="relative w-full h-[90vh] flex flex-row justify-center overflow-hidden">
@@ -101,12 +83,28 @@ export default function Home() {
             preload="auto"
             src="/hero_video.mp4"
           ></video>
-          <h1 className="text-5xl text-white absolute bottom-28 font-bold">
+          <h5
+            className="text-8xl absolute bottom-44 font-bold z-10 text-yellow-300 bg-clip-text from-yellow-400 to-red-600"
+            style={{
+              textShadow:
+                "-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000",
+            }}
+          >
+            Neolectra
+          </h5>
+
+          <h1 className="text-4xl text-white absolute bottom-28 font-bold">
             Build Your Green Future With Solar Energy!
           </h1>
+
+          <div className="absolute bottom-10 z-10">
+            <Link href={"/map"}>
+              <button className="text-white text-2xl hover:text-yellow-500 font-bold">Take Me There -{'>'}</button>
+            </Link>
+          </div>
         </div>
       </section>
-      <section>
+      <section id="Stats">
         <div className="bg-black text-white py-8">
           <div className="flex justify-center">
             <div className="w-70 h-40 flex-col items-center justify-center m-4 text-center px-4">
@@ -126,12 +124,12 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section>
+      <section id="Process">
         <div className="bg-black text-white">
-          <h2 className="flex text-6xl justify-center items-center font-bold drop-shadow-lg">
+          <h2 className="flex text-6xl justify-center items-center font-bold drop-shadow-lg mb-24">
             Our Process
           </h2>
-          <div className="flex justify-center items-center ml-10 my-4">
+          <div className="flex justify-center items-center ml-10 my-4 mb-24">
             <div className="flex-col justify-center items-center">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -183,7 +181,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section>
+      <section id="Footer">
         <footer className="bg-black">
           <div className="container mx-auto flex justify-between items-center border-t-2 border-yellow-500">
             <div>
