@@ -9,9 +9,6 @@ export default function Crop() {
   const screenshot = useAppSelector((state: any) => state.uislice.currentScreenshot);
   const [clippedImg, setClippedImg] = useState();
   const dispatch = useAppDispatch();
-  useEffect(() => {
-    if (!screenshot) window.location.href = "/map";
-  }, [screenshot]);
   return (
     <>
       {screenshot ? (
