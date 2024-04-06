@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { FaArrowRight } from "react-icons/fa";
 import { MdDeleteOutline } from "react-icons/md";
 import { useAppDispatch, useAppSelector } from "@/components/reduxHooks";
+import Link from "next/link";
 export default function Crop() {
   const screenshot = useAppSelector((state: any) => state.uislice.currentScreenshot);
   const [clippedImg, setClippedImg] = useState();
@@ -37,10 +38,12 @@ export default function Crop() {
                 <span style={{ marginLeft: "10px" }}>Clear</span>
                 <MdDeleteOutline className={styles.clearBoxIcon} />
               </button>
-              <button className={styles.nextButton}>
-                <span style={{ marginRight: "25px" }}>Next</span>
-                <FaArrowRight className={styles.nextBoxIcon} />
-              </button>
+              <Link href={"/results"}>
+                <button className={styles.nextButton}>
+                  <span style={{ marginRight: "25px" }}>Next</span>
+                  <FaArrowRight className={styles.nextBoxIcon} />
+                </button>
+              </Link>
             </div>
             <div className={styles.ball1}>&nbsp;&nbsp;</div>
             <div className={styles.ball2}>&nbsp;&nbsp;</div>
