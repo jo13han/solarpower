@@ -118,3 +118,59 @@
     right: 25px;
   }
 }
+.guidenceContainer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  margin-bottom: 30px;
+  margin-left: 35px;
+  background-color: rgb(23, 23, 23);
+  color: white;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 450px;
+  height: 50px;
+  border-radius: 10px;
+  -webkit-box-shadow: -1px 3px 5px 4px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: -1px 3px 5px 4px rgba(0, 0, 0, 0.75);
+  box-shadow: -1px 3px 5px 4px rgba(0, 0, 0, 0.75);
+  opacity: 0.9;
+}
+
+.solarPot {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  margin-bottom: 30px;
+  margin-left: 35px;
+  background-color: rgb(246, 189, 20);
+  color: rgb(0, 0, 0);
+  font-weight: bolder;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 450px;
+  height: 50px;
+  border-radius: 10px;
+  -webkit-box-shadow: -1px 3px 5px 4px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: -1px 3px 5px 4px rgba(0, 0, 0, 0.75);
+  box-shadow: -1px 3px 5px 4px rgba(0, 0, 0, 0.75);
+  opacity: 0.8;
+}
+
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  .guidenceContainer {
+    width: 230px;
+    font-size: 10px;
+    margin-left: 15px;
+  }
+
+  .solarPot {
+    width: 230px;
+    font-size: 10px;
+    margin-left: 15px;
+  }
+}

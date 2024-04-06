@@ -17,7 +17,7 @@ export default function RenderMap() {
   const [marker, setMarker] = useState<google.maps.Marker | null>(null);
   const [hide, setHide] = useState<Boolean>(false);
   const [image, setImage] = useState<any>(null);
-
+  const solarEnergy="300"
   const screenshotRef = useRef<any>(null);
 
   //using html2canvas to capture screenshot of the map
@@ -131,6 +131,11 @@ export default function RenderMap() {
               </div>
             ) : null}
           </div>
+          {solarEnergy && searchText == "" ? (
+            <div className={styles.solarPot}>Solar Energy Today: {solarEnergy} (Kwh/m2/day)</div>
+          ) : (
+            <div className={styles.guidenceContainer}>Search your home and zoom over the roof</div>
+          )}
         </div>
       ) : null}
     </div>
