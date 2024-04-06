@@ -1,6 +1,7 @@
 "use client";
 import styles from "./page.module.css";
 import { Map, useMap } from "@vis.gl/react-google-maps";
+import Link from "next/link";
 import { ChangeEvent, useState } from "react";
 import { FaArrowRight } from "react-icons/fa";
 
@@ -33,10 +34,13 @@ export default function RenderMap() {
         disableDefaultUI={true}
       />
 
-      <button className={styles.nextButton} onClick={() => captureScreenshot()}>
-        <span style={{ marginRight: "25px" }}>Next</span>
-        <FaArrowRight className={styles.nextBoxIcon} />
-      </button>
+      <Link href={"/crop"}>
+        <button className={styles.nextButton} onClick={() => captureScreenshot()}>
+          <span style={{ marginRight: "25px" }}>Next</span>
+          <FaArrowRight className={styles.nextBoxIcon} />
+        </button>
+      </Link>
+
       <input
         value={searchText}
         onChange={(e) => handleSearch(e)}
