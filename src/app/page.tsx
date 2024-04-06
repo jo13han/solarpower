@@ -1,4 +1,5 @@
 "use client"
+import Link from 'next/link';
 import { useState, useEffect } from 'react';
 
 export default function Home() {
@@ -65,6 +66,22 @@ export default function Home() {
                 }`}
               ></span>
             </button>
+        <Link href={"/map"}>
+            <button
+              className={`relative bg-transparent text-gray-800 font-bold py-2 px-4 ${
+                hoveredButton === 'connect' ? '' : ''
+              }`}
+              onMouseEnter={() => setHoveredButton('connect')}
+              onMouseLeave={() => setHoveredButton(null)}
+            >
+              Take Me There!
+              <span
+                className={`absolute left-0 right-0 bottom-0 h-1 bg-yellow-300 transition-all duration-300 ${
+                  hoveredButton === 'connect' ? 'transform scale-x-100' : 'transform scale-x-0'
+                }`}
+              ></span>
+            </button>
+        </Link>
           </nav>
         )}
         <div className="relative w-full h-[90vh] flex flex-row justify-center overflow-hidden">
