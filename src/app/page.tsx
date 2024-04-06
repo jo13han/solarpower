@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 
 export default function Home() {
   const [showNavbar, setShowNavbar] = useState(true);
@@ -21,7 +22,7 @@ export default function Home() {
 
   return (
     <>
-      <section id ="Front">
+      <section id="Front">
         {showNavbar && (
           <nav className="flex justify-center items-center absolute top-0 left-0 right-0 bg-transparent py-4 z-10">
             <button
@@ -94,18 +95,24 @@ export default function Home() {
           </h5>
 
           <h1 className="text-4xl text-white absolute bottom-28 font-bold">
-            Build Your Green Future With Solar Energy!
+            Build Your Green Future With Renewable Energy!
           </h1>
 
           <div className="absolute bottom-10 z-10">
             <Link href={"/map"}>
-              <button className="text-white text-2xl hover:text-yellow-500 font-bold">Take Me There -{'>'}</button>
+              <button className="text-white text-2xl hover:text-yellow-500 font-bold">
+                Take Me There -{">"}
+              </button>
             </Link>
           </div>
         </div>
       </section>
       <section id="Stats">
-        <div className="bg-black text-white py-8">
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          className="bg-black text-white py-8 opacity-0"
+        >
           <div className="flex justify-center">
             <div className="w-70 h-40 flex-col items-center justify-center m-4 text-center px-4">
               <p className="text-5xl font-bold text-yellow-500">3,245 KW</p>
@@ -122,10 +129,14 @@ export default function Home() {
               <p className="text-2xl py-2">Solar Energy Savings Today</p>
             </div>
           </div>
-        </div>
+        </motion.div>
       </section>
       <section id="Process">
-        <div className="bg-black text-white">
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          className="bg-black text-white"
+        >
           <h2 className="flex text-6xl justify-center items-center font-bold drop-shadow-lg mb-24">
             Our Process
           </h2>
@@ -150,8 +161,7 @@ export default function Home() {
                 ></path>
               </svg>
               <p className="text-xl py-4 ml-8">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in
-                lacus ut enim scelerisque.
+              Enter your address to receive a detailed assessment of your rooftop's solar potential. Our platform recommends the best solar panel setup tailored to your roof and energy requirements, making solar adoption hassle-free.
               </p>
             </div>
             <div className="flex flex-col justify-center items-center ml-5">
@@ -160,9 +170,8 @@ export default function Home() {
                 className="h-24 w-24"
                 alt="Solar Panel"
               ></img>
-              <p className="text-xl py-4">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in
-                lacus ut enim scelerisque.
+              <p className="text-xl py-8">
+              Discover top-rated vendors and products optimized for your solar project. Our tools help you choose the most efficient and cost-effective solar panels, ensuring you get the best solution for your needs.
               </p>
             </div>
 
@@ -172,13 +181,12 @@ export default function Home() {
                 className="h-20 w-20"
                 alt="Light Bulb"
               ></img>
-              <p className="text-xl py-4">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in
-                lacus ut enim scelerisque.
+              <p className="text-xl py-6">
+              Explore available financial incentives and rebates to make solar installation more affordable. We guide you through loan options and facilitate the setup of net metering connections, maximizing your solar savings and grid interaction.
               </p>
             </div>
           </div>
-        </div>
+        </motion.div>
       </section>
 
       <section id="Footer">
