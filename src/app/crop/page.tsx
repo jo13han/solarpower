@@ -4,11 +4,11 @@ import ReactLassoSelect, { getCanvas } from "react-lasso-select";
 import { useEffect, useState } from "react";
 import { FaArrowRight } from "react-icons/fa";
 import { MdDeleteOutline } from "react-icons/md";
+import { useAppDispatch, useAppSelector } from "@/components/reduxHooks";
 export default function Crop() {
+  const screenshot = useAppSelector((state: any) => state.uislice.currentScreenshot);
   const [clippedImg, setClippedImg] = useState();
-  //get rid of this later by adding check for screenshot and loading screen
-  const screenshot =
-    "https://media.discordapp.net/attachments/979277341723332638/1223887944738275389/image.png?ex=661b7d78&is=66090878&hm=3c0842acb7ed09287473acf9f1c8142fb986c4db78d2252559a764f80ea0d764&=&format=webp&quality=lossless&width=1200&height=481";
+  const dispatch = useAppDispatch();
   useEffect(() => {
     if (!screenshot) window.location.href = "/map";
   }, [screenshot]);

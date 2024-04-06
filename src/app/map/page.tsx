@@ -7,6 +7,8 @@ import { ChangeEvent, useRef, useState } from "react";
 import { FaArrowRight } from "react-icons/fa";
 import { FaSearch } from "react-icons/fa";
 import html2canvas from "html2canvas";
+import { saveScreenshot, fetchSolar } from "@/components/UISlice";
+import { useAppDispatch, useAppSelector } from "@/components/reduxHooks";
 
 export default function RenderMap() {
   const map = useMap("main-map");
@@ -17,8 +19,12 @@ export default function RenderMap() {
   const [marker, setMarker] = useState<google.maps.Marker | null>(null);
   const [hide, setHide] = useState<Boolean>(false);
   const [image, setImage] = useState<any>(null);
-  const solarEnergy="300"
+
   const screenshotRef = useRef<any>(null);
+
+  const solarEnergy = useAppSelector((state) => state.uislice.currentSolar);
+
+  const dispatch = useAppDispatch();
 
   //using html2canvas to capture screenshot of the map
   function captureScreenshot() {
@@ -35,7 +41,7 @@ export default function RenderMap() {
       // Create an image element from the data URL
       var img = new Image();
       img.src = dataURL;
-      setImage(img);
+      dispatch(saveScreenshot(img.src));
     });
     //enable the ui
     setHide(false);
@@ -80,6 +86,7 @@ export default function RenderMap() {
     const lng = location?.results[0]?.geometry?.location?.lng();
     setMarker(marker);
     //@ts-ignore
+    dispatch(fetchSolar({ lat, lng }));
     //close the search menu after selecting location
     setSearchText("");
   }

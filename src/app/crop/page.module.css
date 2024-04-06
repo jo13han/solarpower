@@ -140,3 +140,55 @@
   right: 40px;
   bottom: 100px;
 }
+
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  .guidenceContainer {
+    width: 81%;
+    font-size: 12px;
+    margin-left: 40px;
+    margin-bottom: 80px;
+  }
+
+  .ball1 .ball2 .ball3 .ball4 {
+    display: none;
+  }
+}
+
+.ball1 {
+  border-radius: 50px;
+  width: 70px;
+  height: 70px;
+  background-color: white;
+  position: absolute;
+  left: 25px;
+  top: 30px;
+}
+
+.ball2 {
+  border-radius: 50px;
+  width: 40px;
+  height: 40px;
+  background-color: white;
+  position: absolute;
+  right: 25px;
+  top: 60px;
+}
+.ball3 {
+  border-radius: 50px;
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  position: absolute;
+  left: 70px;
+  bottom: 150px;
+}
+.ball4 {
+  border-radius: 50px;
+  width: 60px;
+  height: 60px;
+  background-color: white;
+  position: absolute;
+  right: 40px;
+  bottom: 100px;
+}
