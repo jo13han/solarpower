@@ -27,14 +27,14 @@ const initialUiState: UiState = {
   processedImg: null,
   add: null,
   zoomLevel: null,
-  waterHarvesting: true,
+  waterHarvesting: false,
   waterData: null,
 };
 
 export const fetchSolar = createAsyncThunk("ui/fetchSolar", async ({ lat, lng }: { lat: number; lng: number }) => {
   if (!lat || !lng) return {};
   const response: any = await axios.get(
-    `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${lat}, ${lng}/last30days?key=HXG2QS6G327DDC6FS9HWFJ2C9&include=days`
+    `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${lat}, ${lng}/last30days?key=HWRNP6FHA3NHXQ2KBR96TM9C3&include=days`
   );
   console.log(response?.data);
   if (!response?.data) return {};

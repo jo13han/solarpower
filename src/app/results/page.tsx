@@ -6,6 +6,7 @@ import axios from "axios";
 import Link from "next/link";
 import { FaArrowRight } from "react-icons/fa";
 import { saveProcessed, setWaterData } from "@/components/UISlice";
+import Loading from "@/components/Loading";
 
 export default function Results() {
   const screenshot = useAppSelector((state) => state.uislice.currentScreenshot);
@@ -123,7 +124,7 @@ export default function Results() {
 
           <div className={styles.imageBox}>
             <span className={styles.title}>Generating</span>
-            {finalImg ? <img className={styles.new} src={finalImg} alt="sss" /> : <span>Loading...</span>}
+            {finalImg ? <img className={styles.new} src={finalImg} alt="sss" /> : <span><Loading /></span>}
           </div>
         </div>
         <div className={styles.rightResults}>
@@ -192,13 +193,13 @@ export default function Results() {
                   >
                     <span className={styles.title}>Amount of co2 saved</span>
                     <span className={styles.value}>
-                      {processedArea ? (125 * 0.3 * SI * processedArea).toFixed(2) : "Loading..."} (g)
+                      {processedArea ? (125 * 0.3 * SI * processedArea).toFixed(2) : <Loading />} (g)
                     </span>
                   </div>
                 )}
                 <div
                   style={{
-                    width: "50%",
+                    width: waterHarvesting ? "100%": "50%",
                     display: "flex",
                     flexDirection: "column",
                     alignItems: "center",
@@ -211,10 +212,10 @@ export default function Results() {
                 >
                   <span className={styles.title}>{waterHarvesting ? "Roof Area" : "Panel Area"}</span>
                   {waterHarvesting ? (
-                    <span className={styles.value}>{waterData ? waterData?.area : "Loading..."} (m2)</span>
+                    <span className={styles.value}>{waterData ? waterData?.area : <Loading />} (m2)</span>
                   ) : (
                     <span className={styles.value}>
-                      {processedArea ? processedArea?.toFixed(2) : "Loading..."} (m2)
+                      {processedArea ? processedArea?.toFixed(2) : <Loading />} (m2)
                     </span>
                   )}
                 </div>
@@ -227,11 +228,11 @@ export default function Results() {
                 </span>
                 {waterHarvesting ? (
                   <span style={{ fontWeight: "600", fontSize: "15px" }} className={styles.value}>
-                    {processedArea ? waterData?.rain_water_harvested?.toFixed(2) : "Loading.."} (l)
+                    {processedArea ? `${waterData?.rain_water_harvested?.toFixed(2)} (l)` : <Loading />} 
                   </span>
                 ) : (
                   <span style={{ fontWeight: "600", fontSize: "15px" }} className={styles.value}>
-                    {processedArea ? (0.3 * SI * processedArea).toFixed(2) : "Loading.."} (kwh)
+                    {processedArea ? (0.3 * SI * processedArea).toFixed(2) : <Loading />} (kwh)
                   </span>
                 )}
               </div>

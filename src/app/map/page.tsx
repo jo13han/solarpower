@@ -54,7 +54,7 @@ export default function RenderMap() {
   async function handleSearch(e: ChangeEvent<HTMLInputElement>) {
     setSearchText(e.target.value);
     //trigger autocomplete only after every 6 letters
-    if (searchText.length % 6 == 0 && searchText != "" && placesLib && map) {
+    if (searchText.length % 2 == 0 && searchText != "" && placesLib && map) {
       const autocomplete = new placesLib.AutocompleteService();
       let autoResults = await autocomplete.getPlacePredictions({ input: searchText });
       console.log("trigger autocomplete");

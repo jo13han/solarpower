@@ -64,7 +64,7 @@ export default function Home() {
         {showNavbar && (
           <nav className="flex justify-center items-center absolute top-0 left-0 right-0 bg-transparent py-4 z-10">
             <button
-              className={`relative bg-transparent text-gray-800 font-bold py-2 px-4 mr-4 ${
+              className={`relative text-2xl bg-transparent text-gray-800 font-bold py-2 px-4 mr-4 ${
                 hoveredButton === "process" ? "" : ""
               }`}
               onMouseEnter={() => setHoveredButton("process")}
@@ -79,7 +79,7 @@ export default function Home() {
               ></span>
             </button>
             <button
-              className={`relative bg-transparent text-gray-800 font-bold py-2 px-4 mr-4 ${
+              className={`relative text-2xl bg-transparent text-gray-800 font-bold py-2 px-4 mr-4 ${
                 hoveredButton === "services" ? "" : ""
               }`}
               onMouseEnter={() => setHoveredButton("services")}
@@ -94,7 +94,7 @@ export default function Home() {
               ></span>
             </button>
             <button
-              className={`relative bg-transparent text-gray-800 font-bold py-2 px-4 ${
+              className={`relative text-2xl bg-transparent text-gray-800 font-bold py-2 px-4 ${
                 hoveredButton === "connect" ? "" : ""
               }`}
               onMouseEnter={() => setHoveredButton("connect")}
@@ -189,7 +189,7 @@ export default function Home() {
       </section>
       <section id="Process">
         <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} className="bg-black text-white">
-          <h2 className="flex text-6xl justify-center items-center font-bold drop-shadow-lg mb-24">Our Process</h2>
+          <h2 className="flex text-6xl justify-center items-center font-bold drop-shadow-lg mb-24">Our Processes</h2>
           <div className="flex justify-center items-center ml-10 my-4 mb-24">
             <div className="flex-col justify-center items-center">
               <svg
@@ -211,7 +211,7 @@ export default function Home() {
                 ></path>
               </svg>
               <p className="text-xl py-4 ml-8 ">
-                Enter your address to receive a detailed assessment of your rooftop &apos;s solar potential. Our
+                Enter your address to receive a detailed assessment of your rooftop&apos;s solar potential. Our
                 platform recommends the best solar panel setup tailored to your roof and energy requirements, making
                 solar adoption hassle-free.
               </p>
