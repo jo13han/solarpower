@@ -1,5 +1,9 @@
 BACKEND LINK WITH IMAGE ALGORITHM: "https://github.com/toxic-candy/image-parse"
 
+Solar Panel Placement and price and benefit calculation demo: "https://drive.google.com/file/d/19GcBfwQl-c-JBJCFfdYl2kiXCeKaasQ3/view?usp=sharing"
+
+Rain Water Harvesting and total roof area demo: "https://drive.google.com/file/d/1qGXAhG8T-GA7NEwFupU09PolBw07U2A3/view?usp=sharing"
+
 Submission for HACKNXS-MITSOLSTICE
 
 Team name: Windows 9 Devs
