@@ -12,6 +12,8 @@ export type UiState = {
   add: string | null;
   processedArea: number | null;
   processedImg: any;
+  zoomLevel: number | null;
+  waterHarvesting: boolean;
 };
 
 const initialUiState: UiState = {
@@ -23,12 +25,14 @@ const initialUiState: UiState = {
   processedArea: null,
   processedImg: null,
   add: null,
+  zoomLevel: null,
+  waterHarvesting: false,
 };
 
 export const fetchSolar = createAsyncThunk("ui/fetchSolar", async ({ lat, lng }: { lat: number; lng: number }) => {
   if (!lat || !lng) return {};
   const response: any = await axios.get(
-    `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${lat}, ${lng}/last30days?key=KDSAYPR7BZFN8QSTA33EFZTFK&include=days`
+    `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${lat}, ${lng}/last30days?key=HXG2QS6G327DDC6FS9HWFJ2C9&include=days`
   );
   console.log(response?.data);
   if (!response?.data) return {};
@@ -79,6 +83,16 @@ const uiSlice = createSlice({
     saveAdd: (state, action) => {
       state.add = action.payload;
     },
+    saveZoom: (state, action) => {
+      state.zoomLevel = action.payload;
+    },
+    saveProcessed: (state, action) => {
+      state.processedArea = action.payload.processedArea;
+      state.processedImg = action.payload.processedImg;
+    },
+    setHarvesting: (state, action) => {
+      state.waterHarvesting = action.payload;
+    },
   },
   extraReducers(builder) {
     builder
@@ -95,6 +109,6 @@ const uiSlice = createSlice({
   },
 });
 
-export const { saveScreenshot, saveCrop, saveCords, saveAdd } = uiSlice.actions;
+export const { saveScreenshot, saveCrop, saveCords, saveAdd, saveZoom, saveProcessed } = uiSlice.actions;
 
 export default uiSlice.reducer;

@@ -7,7 +7,7 @@ import { ChangeEvent, useRef, useState } from "react";
 import { FaArrowRight } from "react-icons/fa";
 import { FaSearch } from "react-icons/fa";
 import html2canvas from "html2canvas";
-import { saveScreenshot, fetchSolar, saveCords, saveAdd } from "@/components/UISlice";
+import { saveScreenshot, fetchSolar, saveCords, saveAdd, saveZoom } from "@/components/UISlice";
 import { useAppDispatch, useAppSelector } from "@/components/reduxHooks";
 
 export default function RenderMap() {
@@ -29,6 +29,8 @@ export default function RenderMap() {
   //using html2canvas to capture screenshot of the map
   function captureScreenshot() {
     console.log("capturing");
+    dispatch(saveZoom(map?.getZoom()));
+    console.log(map?.getZoom());
     //hide the ui
     setHide(true);
     //hiding the marker
@@ -107,6 +109,7 @@ export default function RenderMap() {
           gestureHandling={"greedy"}
           mapTypeId={"satellite"}
           disableDefaultUI={true}
+          scaleControl={true}
         />
       </div>
 
