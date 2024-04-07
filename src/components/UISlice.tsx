@@ -14,6 +14,7 @@ export type UiState = {
   processedImg: any;
   zoomLevel: number | null;
   waterHarvesting: boolean;
+  waterData: any;
 };
 
 const initialUiState: UiState = {
@@ -26,7 +27,8 @@ const initialUiState: UiState = {
   processedImg: null,
   add: null,
   zoomLevel: null,
-  waterHarvesting: false,
+  waterHarvesting: true,
+  waterData: null,
 };
 
 export const fetchSolar = createAsyncThunk("ui/fetchSolar", async ({ lat, lng }: { lat: number; lng: number }) => {
@@ -93,6 +95,9 @@ const uiSlice = createSlice({
     setHarvesting: (state, action) => {
       state.waterHarvesting = action.payload;
     },
+    setWaterData: (state, action) => {
+      state.waterData = action.payload;
+    },
   },
   extraReducers(builder) {
     builder
@@ -109,6 +114,7 @@ const uiSlice = createSlice({
   },
 });
 
-export const { saveScreenshot, saveCrop, saveCords, saveAdd, saveZoom, saveProcessed } = uiSlice.actions;
+export const { saveScreenshot, saveCrop, saveCords, saveAdd, saveZoom, saveProcessed, setWaterData, setHarvesting } =
+  uiSlice.actions;
 
 export default uiSlice.reducer;

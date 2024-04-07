@@ -3,10 +3,13 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import SolarPanel from "@/components/SolarPanel";
+import { useAppDispatch } from "@/components/reduxHooks";
+import { setHarvesting } from "@/components/UISlice";
 
 export default function Home() {
   const [showNavbar, setShowNavbar] = useState(true);
   const [hoveredButton, setHoveredButton] = useState<string | null>(null);
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -25,10 +28,7 @@ export default function Home() {
     };
   }, []);
 
-  const handleSmoothScroll = (
-    e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
-    id: string
-  ) => {
+  const handleSmoothScroll = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>, id: string) => {
     e.preventDefault();
     const targetElement = document.querySelector(id) as HTMLElement | null;
     if (targetElement) {
@@ -38,12 +38,7 @@ export default function Home() {
     }
   };
 
-  function countUpto(
-    elem: HTMLElement | null,
-    target: number,
-    duration: number,
-    unit: string
-  ) {
+  function countUpto(elem: HTMLElement | null, target: number, duration: number, unit: string) {
     if (!elem) return;
 
     let count = 0;
@@ -79,9 +74,7 @@ export default function Home() {
               Process
               <span
                 className={`absolute left-0 right-0 bottom-0 h-1 bg-yellow-300 transition-all duration-300 ${
-                  hoveredButton === "process"
-                    ? "transform scale-x-100"
-                    : "transform scale-x-0"
+                  hoveredButton === "process" ? "transform scale-x-100" : "transform scale-x-0"
                 }`}
               ></span>
             </button>
@@ -96,9 +89,7 @@ export default function Home() {
               Services
               <span
                 className={`absolute left-0 right-0 bottom-0 h-1 bg-yellow-300 transition-all duration-300 ${
-                  hoveredButton === "services"
-                    ? "transform scale-x-100"
-                    : "transform scale-x-0"
+                  hoveredButton === "services" ? "transform scale-x-100" : "transform scale-x-0"
                 }`}
               ></span>
             </button>
@@ -113,9 +104,7 @@ export default function Home() {
               Connect
               <span
                 className={`absolute left-0 right-0 bottom-0 h-1 bg-yellow-300 transition-all duration-300 ${
-                  hoveredButton === "connect"
-                    ? "transform scale-x-100"
-                    : "transform scale-x-0"
+                  hoveredButton === "connect" ? "transform scale-x-100" : "transform scale-x-0"
                 }`}
               ></span>
             </button>
@@ -133,8 +122,7 @@ export default function Home() {
           <h5
             className="text-8xl absolute bottom-56 font-bold z-10 text-yellow-300 bg-clip-text from-yellow-400 to-red-600"
             style={{
-              textShadow:
-                "-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000",
+              textShadow: "-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000",
             }}
           >
             Neolectra
@@ -147,14 +135,20 @@ export default function Home() {
           <div className="absolute bottom-10 z-10 flex justify-center w-full">
             <div className="mx-4">
               <Link href={"/map"}>
-                <button className="text-white text-2xl hover:text-yellow-500 font-bold">
+                <button
+                  onClick={() => dispatch(setHarvesting(false))}
+                  className="text-white text-2xl hover:text-yellow-500 font-bold"
+                >
                   Solar Solutions -{">"}
                 </button>
               </Link>
             </div>
             <div className="mx-4">
               <Link href={"/map"}>
-                <button className="text-white text-2xl hover:text-blue-500 font-bold">
+                <button
+                  onClick={() => dispatch(setHarvesting(true))}
+                  className="text-white text-2xl hover:text-blue-500 font-bold"
+                >
                   Rainwater Harvesting Solutions -{">"}
                 </button>
               </Link>
@@ -170,10 +164,7 @@ export default function Home() {
         >
           <div className="flex flex-row justify-center">
             <div className="h-40 flex-col items-center justify-center m-4 text-center px-4">
-              <p
-                id="energy_count"
-                className="text-5xl font-bold text-yellow-500"
-              >
+              <p id="energy_count" className="text-5xl font-bold text-yellow-500">
                 3,245 KW
               </p>
               <p className="text-2xl py-2">Solar Energy Generated Today</p>
@@ -185,10 +176,7 @@ export default function Home() {
               <p className="text-2xl py-2">CO2 Emissions This Year</p>
             </div>
             <div className="h-40 flex-col items-center justify-center m-4 text-center px-4">
-              <p
-                id="savings_count"
-                className="text-5xl font-bold text-yellow-500"
-              >
+              <p id="savings_count" className="text-5xl font-bold text-yellow-500">
                 1,567 KW
               </p>
               <p className="text-2xl py-2">Solar Energy Savings Today</p>
@@ -200,14 +188,8 @@ export default function Home() {
         <SolarPanel />
       </section>
       <section id="Process">
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          className="bg-black text-white"
-        >
-          <h2 className="flex text-6xl justify-center items-center font-bold drop-shadow-lg mb-24">
-            Our Process
-          </h2>
+        <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} className="bg-black text-white">
+          <h2 className="flex text-6xl justify-center items-center font-bold drop-shadow-lg mb-24">Our Process</h2>
           <div className="flex justify-center items-center ml-10 my-4 mb-24">
             <div className="flex-col justify-center items-center">
               <svg
@@ -229,86 +211,52 @@ export default function Home() {
                 ></path>
               </svg>
               <p className="text-xl py-4 ml-8 ">
-                Enter your address to receive a detailed assessment of your
-                rooftop &apos;s solar potential. Our platform recommends the
-                best solar panel setup tailored to your roof and energy
-                requirements, making solar adoption hassle-free.
+                Enter your address to receive a detailed assessment of your rooftop &apos;s solar potential. Our
+                platform recommends the best solar panel setup tailored to your roof and energy requirements, making
+                solar adoption hassle-free.
               </p>
             </div>
             <div className="flex flex-col justify-center items-center ml-5">
-              <img
-                src="/images/solarpanel.png"
-                className="h-24 w-24"
-                alt="Solar Panel"
-              ></img>
+              <img src="/images/solarpanel.png" className="h-24 w-24" alt="Solar Panel"></img>
               <p className="text-xl py-8">
-                Discover top-rated vendors and products optimized for your solar
-                project. Our tools help you choose the most efficient and
-                cost-effective solar panels, ensuring you get the best solution
-                for your needs.
+                Discover top-rated vendors and products optimized for your solar project. Our tools help you choose the
+                most efficient and cost-effective solar panels, ensuring you get the best solution for your needs.
               </p>
             </div>
 
             <div className="flex flex-col justify-center items-center ml-5 mr-10">
-              <img
-                src="/images/lightbulb.png"
-                className="h-20 w-20"
-                alt="Light Bulb"
-              ></img>
+              <img src="/images/lightbulb.png" className="h-20 w-20" alt="Light Bulb"></img>
               <p className="text-xl py-6">
-                Explore available financial incentives and rebates to make solar
-                installation more affordable. We guide you through loan options
-                and facilitate the setup of net metering connections, maximizing
-                your solar savings and grid interaction.
+                Explore available financial incentives and rebates to make solar installation more affordable. We guide
+                you through loan options and facilitate the setup of net metering connections, maximizing your solar
+                savings and grid interaction.
               </p>
             </div>
           </div>
         </motion.div>
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          className="bg-black text-white"
-        >
-          <div className="container mx-auto flex justify-between items-center border-t-2 border-yellow-500">
-            {" "}
-          </div>
+        <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} className="bg-black text-white">
+          <div className="container mx-auto flex justify-between items-center border-t-2 border-yellow-500"> </div>
           <div className="flex justify-center items-center ml-10 my-4 mb-24">
             <div className="flex flex-col justify-center items-center ml-5">
-              <img
-                src="/images/waterdrop.png"
-                className="h-20 w-20"
-                alt="Water Drop"
-              ></img>
+              <img src="/images/waterdrop.png" className="h-20 w-20" alt="Water Drop"></img>
               <p className="text-xl py-6">
-                Evaluate the potential for rainwater harvesting by analyzing
-                rooftop area and local precipitation data to estimate water
-                yield and identify suitable storage locations.
+                Evaluate the potential for rainwater harvesting by analyzing rooftop area and local precipitation data
+                to estimate water yield and identify suitable storage locations.
               </p>
             </div>
             <div className="flex flex-col justify-center items-center ml-5">
-              <img
-                src="/images/valley.png"
-                className="h-20 w-24"
-                alt="Valley"
-              ></img>
+              <img src="/images/valley.png" className="h-20 w-24" alt="Valley"></img>
               <p className="text-xl py-6">
-                Design and implement efficient rainwater harvesting systems
-                tailored to building needs, optimizing design for maximum water
-                utilization and implementing smart monitoring for effective
-                management.
+                Design and implement efficient rainwater harvesting systems tailored to building needs, optimizing
+                design for maximum water utilization and implementing smart monitoring for effective management.
               </p>
             </div>
 
             <div className="flex flex-col justify-center items-center ml-5 mr-10">
-              <img
-                src="/images/watertank.png"
-                className="h-16 w-24"
-                alt="Water Tank"
-              ></img>
+              <img src="/images/watertank.png" className="h-16 w-24" alt="Water Tank"></img>
               <p className="text-xl py-6">
-                Conduct comprehensive analysis of economic viability and
-                environmental benefits, including cost-benefit analysis and
-                guidance on accessing financial incentives and subsidies.
+                Conduct comprehensive analysis of economic viability and environmental benefits, including cost-benefit
+                analysis and guidance on accessing financial incentives and subsidies.
               </p>
             </div>
           </div>
@@ -321,38 +269,24 @@ export default function Home() {
             <div className="flex items-center m-4">
               {" "}
               {/* Utilize flexbox to align items */}
-              <h3 className="text-yellow-500 text-xl font-bold">
-                neolectra@gmail.com
-              </h3>
+              <h3 className="text-yellow-500 text-xl font-bold">neolectra@gmail.com</h3>
               <p className="ml-80 text-slate-300">©2024 Neolectra India</p>
             </div>
             <div className="flex py-6">
               <ul className="flex space-x-4">
                 <li>
                   <a href="#" className="text-yellow-500 hover:text-yellow-400">
-                    <img
-                      src="/images/instagram.png"
-                      alt="Instagram"
-                      className="h-10 w-10"
-                    ></img>
+                    <img src="/images/instagram.png" alt="Instagram" className="h-10 w-10"></img>
                   </a>
                 </li>
                 <li>
                   <a href="#" className="text-yellow-500 hover:text-yellow-400">
-                    <img
-                      src="/images/facebook.png"
-                      alt="facebook"
-                      className="h-10 w-10"
-                    ></img>
+                    <img src="/images/facebook.png" alt="facebook" className="h-10 w-10"></img>
                   </a>
                 </li>
                 <li>
                   <a href="#" className="text-yellow-500 hover:text-yellow-400">
-                    <img
-                      src="/images/linkedin.png"
-                      alt="linkedin"
-                      className="h-10 w-10 mr-10"
-                    ></img>
+                    <img src="/images/linkedin.png" alt="linkedin" className="h-10 w-10 mr-10"></img>
                   </a>
                 </li>
               </ul>
