@@ -196,8 +196,8 @@ export default function Home() {
           </div>
         </motion.div>
       </section>
-      <section>
-      <SolarPanel />
+      <section className="h-96">
+        <SolarPanel />
       </section>
       <section id="Process">
         <motion.div

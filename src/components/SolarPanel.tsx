@@ -8,7 +8,7 @@ export default function SolarPanel() {
   useEffect(() => {
     // Canvas
     const canvas = document.querySelector("canvas.webgl");
-
+    const parent = canvas?.parentElement as HTMLElement;
     // Scene
     const scene = new THREE.Scene();
 
@@ -22,6 +22,7 @@ export default function SolarPanel() {
     gltfLoader.load("/models/SolarPanel/scene.gltf", (gltf: any) => {
       solarPanel = gltf.scene.children[0]; // Assign the loaded model to the variable
       scene.add(solarPanel);
+      solarPanel.position = new THREE.Vector3(0, -5, 0);
       solarPanel.rotation.x = startRotation;
     });
 
@@ -46,14 +47,14 @@ export default function SolarPanel() {
      * Sizes
      */
     const sizes = {
-      width: window.innerWidth,
-      height: window.innerHeight,
+      width: parent.clientWidth,
+      height: parent.clientHeight,
     };
 
     window.addEventListener("resize", () => {
       // Update sizes
-      sizes.width = window.innerWidth;
-      sizes.height = window.innerHeight;
+      sizes.width = parent.clientWidth;
+      sizes.height = parent.clientHeight;
 
       // Update camera
       camera.aspect = sizes.width / sizes.height;
@@ -74,7 +75,8 @@ export default function SolarPanel() {
       0.1,
       100
     );
-    camera.position.set(0, 1.5, 5);
+    camera.lookAt(new THREE.Vector3(0, 0, 0));
+    camera.position.set(0, 0, 4);
     scene.add(camera);
 
     /**
