@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import SolarPanel from "@/components/SolarPanel";
 
 export default function Home() {
   const [showNavbar, setShowNavbar] = useState(true);
@@ -14,7 +15,7 @@ export default function Home() {
     };
 
     window.addEventListener("scroll", handleScroll);
-    
+
     countUpto(document.querySelector("#energy_count"), 3245, 2000, "KW");
     countUpto(document.querySelector("#co2_count"), 11398587, 2000, "KT");
     countUpto(document.querySelector("#savings_count"), 1567, 2000, "KW");
@@ -36,17 +37,22 @@ export default function Home() {
       });
     }
   };
-  
-  function countUpto(elem: HTMLElement | null, target: number, duration: number, unit: string) {
+
+  function countUpto(
+    elem: HTMLElement | null,
+    target: number,
+    duration: number,
+    unit: string
+  ) {
     if (!elem) return;
-  
+
     let count = 0;
     const intervalDuration = 10; // Interval duration in milliseconds
     const frames = duration / intervalDuration; // Total number of frames
     const increment = target / frames; // Increment value per frame
-  
+
     let currentCount = 0;
-  
+
     const interval = setInterval(() => {
       if (currentCount < target) {
         currentCount += increment;
@@ -56,7 +62,7 @@ export default function Home() {
       }
     }, intervalDuration);
   }
-  
+
   return (
     <>
       <section id="Front">
@@ -125,7 +131,7 @@ export default function Home() {
             src="/hero_video.mp4"
           ></video>
           <h5
-            className="text-8xl absolute bottom-44 font-bold z-10 text-yellow-300 bg-clip-text from-yellow-400 to-red-600"
+            className="text-8xl absolute bottom-56 font-bold z-10 text-yellow-300 bg-clip-text from-yellow-400 to-red-600"
             style={{
               textShadow:
                 "-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000",
@@ -134,16 +140,25 @@ export default function Home() {
             Neolectra
           </h5>
 
-          <h1 className="text-4xl text-white absolute bottom-28 font-bold">
+          <h1 className="text-5xl text-white absolute bottom-36 font-bold">
             Build Your Green Future With Renewable Energy!
           </h1>
 
-          <div className="absolute bottom-10 z-10">
-            <Link href={"/map"}>
-              <button className="text-white text-2xl hover:text-yellow-500 font-bold">
-                Take Me There -{">"}
-              </button>
-            </Link>
+          <div className="absolute bottom-10 z-10 flex justify-center w-full">
+            <div className="mx-4">
+              <Link href={"/map"}>
+                <button className="text-white text-2xl hover:text-yellow-500 font-bold">
+                  Solar Solutions -{">"}
+                </button>
+              </Link>
+            </div>
+            <div className="mx-4">
+              <Link href={"/map"}>
+                <button className="text-white text-2xl hover:text-blue-500 font-bold">
+                  Rainwater Harvesting Solutions -{">"}
+                </button>
+              </Link>
+            </div>
           </div>
         </div>
       </section>
@@ -155,21 +170,34 @@ export default function Home() {
         >
           <div className="flex flex-row justify-center">
             <div className="h-40 flex-col items-center justify-center m-4 text-center px-4">
-              <p id="energy_count" className="text-5xl font-bold text-yellow-500">3,245 KW</p>
+              <p
+                id="energy_count"
+                className="text-5xl font-bold text-yellow-500"
+              >
+                3,245 KW
+              </p>
               <p className="text-2xl py-2">Solar Energy Generated Today</p>
             </div>
             <div className="h-40 flex-col items-center justify-center m-4 text-center px-4">
-              <p id="co2_count"className="text-5xl font-bold text-yellow-500">
+              <p id="co2_count" className="text-5xl font-bold text-yellow-500">
                 11,398,587 KT
               </p>
               <p className="text-2xl py-2">CO2 Emissions This Year</p>
             </div>
             <div className="h-40 flex-col items-center justify-center m-4 text-center px-4">
-              <p id="savings_count"className="text-5xl font-bold text-yellow-500">1,567 KW</p>
+              <p
+                id="savings_count"
+                className="text-5xl font-bold text-yellow-500"
+              >
+                1,567 KW
+              </p>
               <p className="text-2xl py-2">Solar Energy Savings Today</p>
             </div>
           </div>
         </motion.div>
+      </section>
+      <section>
+      <SolarPanel />
       </section>
       <section id="Process">
         <motion.div
