@@ -1,3 +1,5 @@
+BACKEND LINK WITH IMAGE ALGORITHM: "https://github.com/toxic-candy/image-parse"
+
 Submission for HACKNXS-MITSOLSTICE
 
 Team name: Windows 9 Devs
