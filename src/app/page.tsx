@@ -121,7 +121,7 @@ export default function Home() {
             </button>
           </nav>
         )}
-        <div className="relative w-full h-[90vh] flex flex-row justify-center overflow-hidden">
+        <div className="relative w-full h-[100vh] flex flex-row justify-center overflow-hidden">
           <video
             className="w-full absolute"
             muted={true}
@@ -264,6 +264,55 @@ export default function Home() {
             </div>
           </div>
         </motion.div>
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          className="bg-black text-white"
+        >
+          <div className="container mx-auto flex justify-between items-center border-t-2 border-yellow-500">
+            {" "}
+          </div>
+          <div className="flex justify-center items-center ml-10 my-4 mb-24">
+            <div className="flex flex-col justify-center items-center ml-5">
+              <img
+                src="/images/waterdrop.png"
+                className="h-20 w-20"
+                alt="Water Drop"
+              ></img>
+              <p className="text-xl py-6">
+                Evaluate the potential for rainwater harvesting by analyzing
+                rooftop area and local precipitation data to estimate water
+                yield and identify suitable storage locations.
+              </p>
+            </div>
+            <div className="flex flex-col justify-center items-center ml-5">
+              <img
+                src="/images/valley.png"
+                className="h-20 w-24"
+                alt="Valley"
+              ></img>
+              <p className="text-xl py-6">
+                Design and implement efficient rainwater harvesting systems
+                tailored to building needs, optimizing design for maximum water
+                utilization and implementing smart monitoring for effective
+                management.
+              </p>
+            </div>
+
+            <div className="flex flex-col justify-center items-center ml-5 mr-10">
+              <img
+                src="/images/watertank.png"
+                className="h-16 w-24"
+                alt="Water Tank"
+              ></img>
+              <p className="text-xl py-6">
+                Conduct comprehensive analysis of economic viability and
+                environmental benefits, including cost-benefit analysis and
+                guidance on accessing financial incentives and subsidies.
+              </p>
+            </div>
+          </div>
+        </motion.div>
       </section>
 
       <section id="Footer">
@@ -275,7 +324,7 @@ export default function Home() {
               <h3 className="text-yellow-500 text-xl font-bold">
                 neolectra@gmail.com
               </h3>
-              <p className="ml-48 text-slate-300">©2024 Neolectra India</p>
+              <p className="ml-80 text-slate-300">©2024 Neolectra India</p>
             </div>
             <div className="flex py-6">
               <ul className="flex space-x-4">
@@ -302,7 +351,7 @@ export default function Home() {
                     <img
                       src="/images/linkedin.png"
                       alt="linkedin"
-                      className="h-10 w-10 mr-4"
+                      className="h-10 w-10 mr-10"
                     ></img>
                   </a>
                 </li>
