@@ -1,6 +1,9 @@
 Submission for HACKNXS-MITSOLSTICE
+
 Team name: Windows 9 Devs
+
 Team no. 311-B
+
 Team members: Sulaiman Abdulla Shariff, Rohith Suju, Rayyaan Farhan, Johan Koshy, Yaashvin SV
 
 Problem statement: The lengthy and expensive process of setting up individual solar and rainwater harvesting systems poses challenges for communities aiming to promote sustainability. This impedes the widespread adoption of renewable energy and water conservation practices, slowing progress towards environmental resilience.
