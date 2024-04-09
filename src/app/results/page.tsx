@@ -34,7 +34,7 @@ export default function Results() {
     data.append("lat", `${lat}`);
     data.append("long", `${lng}`);
     axios
-      .post("https://d0f4-103-169-236-165.ngrok-free.app/rainwater", data, {
+      .post("https://neolectra-backend.onrender.com/rainwater", data, {
         headers: {
           accept: "application/json",
           "Accept-Language": "en-US,en;q=0.8",
@@ -66,7 +66,7 @@ export default function Results() {
     data.append("zoomLevel", `${zoomLevel}`);
     data.append("lat", `${lat}`);
     axios
-      .post("https://d0f4-103-169-236-165.ngrok-free.app/solar", data, {
+      .post("https://neolectra-backend.onrender.com/solar", data, {
         headers: {
           accept: "application/json",
           "Accept-Language": "en-US,en;q=0.8",
